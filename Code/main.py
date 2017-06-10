@@ -8,13 +8,12 @@ from SIGTAP import SIGTAP
 from OWL import OWL
 
 
-#Terminologies
-sigtap = SIGTAP("SigtapSource")
-tuss = TUSS("TussSource")
+## Terminologies
+sigtap = SIGTAP("SigtapResource")
+#tuss = TUSS("TussResource")
 
-#Ontology Format
+## Ontology Format
 owl = OWL()
 
-convert = ConvertTerminologytoOntology(tuss,owl)
+convert = ConvertTerminologytoOntology(sigtap,owl)
 convert.execute()
-convert.save()
