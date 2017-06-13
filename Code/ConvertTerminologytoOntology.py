@@ -16,4 +16,5 @@ class ConvertTerminologytoOntology(object):
         print "Ontology Format: " + self.ontologyFormat.getName()
 
     def execute(self):
-        dataTerminology=self.terminology.execute()
+        dataTerminological = self.terminology.execute()
+        self.ontologyFormat.execute(dataTerminological)

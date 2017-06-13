@@ -30,7 +30,7 @@ class SIGTAP(Terminology):
                 self.relationship.append([self.allCategoriesParent[child[0]][0], self.allCategoriesParent[child[0]+child[1]][0]])
                 self.relationship.append([self.allCategoriesParent[child[0]+child[1]][0], self.allCategoriesParent[child[0]+child[1]+child[2]][0]])
                 self.relationship.append([self.allCategoriesParent[child[0]+child[1]+child[2]][0],child[5]])
-
-        print "Numero de clases: " + str(len(self.classNames))
-        print "Numero de relaciones: " + str(len(self.relationship))
-        return [self.classNames,self.relationship]
+        dataTerminological = {}
+        dataTerminological["class"] = self.classNames
+        dataTerminological["relationship"] = self.relationship
+        return dataTerminological
