@@ -24,5 +24,13 @@ class SIGTAP(Terminology):
 
     def execute(self):
         self.loadData()
-        print "Number of hierarchies: " + str(len(self.categories))
-        print "Number of class: " + str(len(self.categories[0])+len(self.categories[1])+len(self.categories[2])+len(self.categories[3]))
+        for categoriesChild in self.allCategoriesChild:
+            for child in categoriesChild:
+                self.classNames.append(child[5])
+                self.relationship.append([self.allCategoriesParent[child[0]][0], self.allCategoriesParent[child[0]+child[1]][0]])
+                self.relationship.append([self.allCategoriesParent[child[0]+child[1]][0], self.allCategoriesParent[child[0]+child[1]+child[2]][0]])
+                self.relationship.append([self.allCategoriesParent[child[0]+child[1]+child[2]][0],child[5]])
+
+        print "Numero de clases: " + str(len(self.classNames))
+        print "Numero de relaciones: " + str(len(self.relationship))
+        return [self.classNames,self.relationship]

@@ -9,7 +9,10 @@ class Terminology(object):
         self.name = name
         self.pathFolder = OriginalPath + nameFolder + "/"
         self.structures = structures
-        self.categories = {}
+        self.allCategoriesParent = {}
+        self.allCategoriesChild = []
+        self.classNames = []
+        self.relationship = []
 
     def getName(self):
         return self.name
@@ -46,21 +49,30 @@ class Terminology(object):
 
     def loadData(self):
         for structure in self.structures:
-            ###Categories Father
+            ###Categories Parent
             catDaughter = 0
             for catCurrent in range(len(structure['categories'])-1):
                 data = self.fileToMatrix(self.pathFolder + structure['categories'][catCurrent]['nameFile'])
                 for i in range(catCurrent+1):
                     data = self.filter(data,structure['categories'][i]['rank'])
-                self.categories[catCurrent] = data
+                dataMap = {}
+                for line in data:
+                    code = ""
+                    position = 0
+                    for position in range(catCurrent+1):
+                        code = code + line[position]
+                    newLine = line[position+1:]
+                    dataMap[code] = newLine
+                    self.classNames.append(newLine[0])
+                    self.allCategoriesParent[code] = newLine
                 catDaughter = catCurrent
-            ###Categorie Daughter
+            ###Categorie Child
             catDaughter += 1
             data = self.fileToMatrix(self.pathFolder + structure['categories'][catDaughter]['nameFile'])
             data = self.interpret(data)
             for i in range(catDaughter):
                 data = self.filter(data,structure['categories'][i]['rank'])
-            self.categories[catDaughter] = data
+            self.allCategoriesChild.append(data)
 
 
     def __str__(self):
