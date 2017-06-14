@@ -12,3 +12,7 @@ def loadFile(file):
 	document = codecs.open(file, encoding="utf-8", errors='ignore') # Para archivo con codificacion utf-8
 	#document =  codecs.open(file, 'r', 'iso-8859-1')
 	return document
+
+def writeFile(name,data):
+	#data = data.encode('utf-8')
+	file(OntologiesPath + name,'w').write( data )

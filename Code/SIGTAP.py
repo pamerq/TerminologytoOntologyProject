@@ -31,6 +31,7 @@ class SIGTAP(Terminology):
                 self.relationship.append([self.allCategoriesParent[child[0]+child[1]][0], self.allCategoriesParent[child[0]+child[1]+child[2]][0]])
                 self.relationship.append([self.allCategoriesParent[child[0]+child[1]+child[2]][0],child[5]])
         dataTerminological = {}
+        dataTerminological["name"] = self.name
         dataTerminological["class"] = self.classNames
         dataTerminological["relationship"] = self.relationship
         return dataTerminological
