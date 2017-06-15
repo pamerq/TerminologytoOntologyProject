@@ -15,21 +15,12 @@ class OWL(OntologyFormat):
         OntologyFormat.__init__(self, "Owl")
 
     def execute(self,dataTerminological):
-        self.className = dataTerminological["class"]
-        self.relationship = dataTerminological["relationship"]
-        self.name = dataTerminological["name"]
+        self.loadData(dataTerminological)
         self.dataOntology = self.head + self.name + '"' + self.xmlns +  self.name + '">' + self.prefixsname + self.name + '"/>' + self.prefixs
-        a=["Grupo1","Subgrupo1"]
         clases = ""
-        #bufferclass =[]
-        #for i in range(0,3663):#3663
-            #bufferclass.append(self.className[i])
-        #print "Problema:" + self.className[2233] #.replace(' ','_')
         for nameCurrent in self.className:
             clases = clases + '\t<Declaration>\n\t\t<Class IRI="#' + nameCurrent.replace(' ','_') + '"/>\n\t</Declaration>\n'
-        b=[["Grupo1","Subgrupo1"]]
         relations = ""
         for nameRelations in self.relationship:
             relations = relations + '\t<SubClassOf>\n\t\t<Class IRI="#' + nameRelations[1].replace(' ','_') + '"/>\n\t\t<Class IRI="#'+ nameRelations[0].replace(' ','_') + '"/>\n\t</SubClassOf>\n'
-
         writeFile(self.name+".owl", self.dataOntology + clases + relations +'</Ontology>')
