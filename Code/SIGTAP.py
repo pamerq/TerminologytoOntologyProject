@@ -14,7 +14,7 @@ class SIGTAP(Terminology):
                        'categories': {0:{'rank':['02','03','04'],'nameFile':'tb_grupo.txt','nameCategorie':'Grupo'}, ## Categorie More Generic
                                       1:{'rank':[],'nameFile':'tb_sub_grupo.txt','nameCategorie':'Sub Grupo'},
                                       2:{'rank':[],'nameFile':'tb_forma_organizacao.txt','nameCategorie':'Forma de Organizacao'},
-                                      3:{'rank':[],'nameFile':'tb_procedimento.txt','nameCategorie':'Procedmientos'}} ## Categorie More Specific
+                                      3:{'rank':[],'nameFile':'tb_procedimento.txt','nameCategorie':'Procedimientos'}} ## Categorie More Specific
                                       #If rank is empty [] consider all items that fall within the previous category
                       }]
         Terminology.__init__(self, "Sigtap", nameFolder,structures)

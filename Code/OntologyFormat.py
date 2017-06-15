@@ -6,14 +6,14 @@ from Utils import *
 
 class OntologyFormat(object):
     def __init__(self,name):
-        self.name = name
+        self.nameOntologyFormat = name
         self.className = []
         self.relationship = []
         self.name = ""
         self.dataOntology = ""
 
     def getName(self):
-        return self.name
+        return self.nameOntologyFormat
 
     def loadData(self,dataTerminological):
         self.className = dataTerminological["class"]
