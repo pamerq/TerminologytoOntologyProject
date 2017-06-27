@@ -10,10 +10,10 @@ from OWL import OWL
 
 ## Terminologies
 sigtap = SIGTAP("SigtapResource")
-#tuss = TUSS("TussResource")
+tuss = TUSS("TussResource")
 
 ## Ontology Format
 owl = OWL()
 
-convert = ConvertTerminologytoOntology(sigtap,owl)
+convert = ConvertTerminologytoOntology(tuss,owl)
 convert.execute()

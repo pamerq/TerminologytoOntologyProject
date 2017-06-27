@@ -17,7 +17,8 @@ class SIGTAP(Terminology):
                                       3:{'rank':[],'nameFile':'tb_procedimento.txt','nameCategorie':'Procedimientos'}} ## Categorie More Specific
                                       #If rank is empty [] consider all items that fall within the previous category
                       }]
-        Terminology.__init__(self, "Sigtap", nameFolder,structures)
+        numberPosition = 5
+        Terminology.__init__(self, "Sigtap", nameFolder,structures,numberPosition)
 
     def interpretCode(self,code):
         return [code[0:2], code[2:4], code[4:6],code[6:9],code[9:]]

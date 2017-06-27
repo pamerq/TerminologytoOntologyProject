@@ -5,15 +5,16 @@
 from Utils import *
 
 class Terminology(object):
-    def __init__(self,name,nameFolder,structures):
+    def __init__(self,name,nameFolder,structures,numberPosition):
         self.name = name
         self.pathFolder = OriginalPath + nameFolder + "/"
         self.structures = structures
         self.allCategoriesParent = {}
         self.allCategoriesChild = []
         self.classNames = []
+        self.classNamesBuffer = {}
         self.relationship = []
-
+        self.numberPosition = numberPosition
     def getName(self):
         return self.name
 
@@ -55,14 +56,19 @@ class Terminology(object):
                 data = self.fileToMatrix(self.pathFolder + structure['categories'][catCurrent]['nameFile'])
                 for i in range(catCurrent+1):
                     data = self.filter(data,structure['categories'][i]['rank'])
-                dataMap = {}
+                #dataMap = {}
                 for line in data:
                     code = ""
                     position = 0
                     for position in range(catCurrent+1):
                         code = code + line[position]
                     newLine = line[position+1:]
-                    dataMap[code] = newLine
+                    #dataMap[code] = newLine
+                    if self.classNamesBuffer.has_key(newLine[0]):
+                        buff=self.classNamesBuffer[newLine[0]]
+                        self.classNamesBuffer[newLine[0]]=buff+1
+                    else:
+                        self.classNamesBuffer[newLine[0]]=1
                     self.classNames.append(newLine[0])
                     self.allCategoriesParent[code] = newLine
                 catDaughter = catCurrent
